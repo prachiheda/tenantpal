@@ -1,0 +1,23 @@
+[project]
+name = "tenant_pal_crew_automation_for_renters_rights"
+version = "0.1.0"
+description = "tenant_pal_crew_automation_for_renters_rights using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.114.0,<1.0.0"
+]
+
+[project.scripts]
+tenant_pal_crew_automation_for_renters_rights = "tenant_pal_crew_automation_for_renters_rights.main:run"
+run_crew = "tenant_pal_crew_automation_for_renters_rights.main:run"
+train = "tenant_pal_crew_automation_for_renters_rights.main:train"
+replay = "tenant_pal_crew_automation_for_renters_rights.main:replay"
+test = "tenant_pal_crew_automation_for_renters_rights.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

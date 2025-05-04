@@ -1,0 +1,36 @@
+---
+legal_analysis_task:
+  description: Analyze the renter's issue using the input {renter_issue_description}
+    and review the uploaded lease document {lease_document}. Identify and explain
+    the tenant rights relevant to the issue, and flag any potentially illegal clauses
+    or red flags. Provide clear, straightforward explanations using Groq's LLM for
+    fast processing.
+  expected_output: A detailed explanation report outlining the tenant rights applicable
+    to the renter's issue, including any highlighted illegal clauses or red flags
+    from the lease document.
+  async_execution: false
+  agent: Legal Explainer
+communication_drafting_task:
+  description: Utilize the renter's issue description {renter_issue_description} along
+    with the legal insights produced by legal_analysis_task to draft a respectful
+    yet assertive message or email. The message should refer to the identified tenant
+    rights and propose a resolution in a calm and professional tone.
+  expected_output: A drafted communication message/email that addresses the renter's
+    concerns, includes references to the legal findings, and suggests a potential
+    resolution.
+  async_execution: false
+  agent: Conflict Coach
+  context:
+  - legal_analysis_task
+urgency_assessment_task:
+  description: "Analyze the renter's issue described in {renter_issue_description}
+    along with the outputs from legal_analysis_task to classify the urgency of the
+    situation. The task should label the issue as either \U0001F6A8 Urgent, ⚠️ Concerning,
+    or ✅ Routine, and provide a brief justification for the classification."
+  expected_output: "A concise classification of the issue's urgency (\U0001F6A8 Urgent,
+    ⚠️ Concerning, or ✅ Routine) together with a brief explanation for the chosen
+    level."
+  async_execution: false
+  agent: Urgency Filter
+  context:
+  - legal_analysis_task
