@@ -1,0 +1,4 @@
+llm:
+  provider: groq
+  model: groq/llama-3.1-70b-versatile
+  api_key: ${GROQ_API_KEY}  # This will be read from environment variable 
